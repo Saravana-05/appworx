@@ -6,6 +6,8 @@ import BenefitsSection from "@/components/BenefitsSection";
 import JourneySection from "@/components/JourneySection";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
+import CookieBanner from "@/components/CookieBanner";
+import WhatsAppFloat from "@/components/WhatsAppFloat";
 
 const Index = () => {
   return (
@@ -18,6 +20,8 @@ const Index = () => {
       <JourneySection />
       <CTASection />
       <Footer />
+      <CookieBanner /> 
+      <WhatsAppFloat />
     </div>
   );
 };
