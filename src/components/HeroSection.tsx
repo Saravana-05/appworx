@@ -1,5 +1,4 @@
 import { useEffect, useRef, useCallback } from "react";
-import heroVideo from "@/assets/hero-video.mp4.asset.json";
 import { useParallax } from "@/hooks/use-parallax";
 import heroVideoFile from "../assets/hero-video.mp4";
 
@@ -77,7 +76,6 @@ const HeroSection = () => {
         if (p.x < 0 || p.x > w) p.vx *= -1;
         if (p.y < 0 || p.y > h) p.vy *= -1;
 
-        // Mouse repulsion
         const dx = p.x - mouse.x;
         const dy = p.y - mouse.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
@@ -86,7 +84,6 @@ const HeroSection = () => {
           p.vx += dx * force;
           p.vy += dy * force;
         }
-        // Dampen velocity
         p.vx *= 0.99;
         p.vy *= 0.99;
 
@@ -97,7 +94,6 @@ const HeroSection = () => {
         ctx.fill();
       }
 
-      // Connections
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
           const dx = particles[i].x - particles[j].x;
@@ -127,9 +123,15 @@ const HeroSection = () => {
   }, [initParticles]);
 
   return (
-    <section ref={parallaxRef} className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background image */}
-      <div className="absolute inset-0 will-change-transform" style={{ transform: `translateY(${bgOffset * 0.5}px)` }}>
+    <section
+      ref={parallaxRef}
+      className="relative min-h-screen flex items-center justify-center"
+    >
+      {/* Background video */}
+      <div
+        className="absolute inset-0 will-change-transform"
+        style={{ transform: `translateY(${bgOffset * 0.5}px)` }}
+      >
         <video
           src={heroVideoFile}
           autoPlay
@@ -143,59 +145,73 @@ const HeroSection = () => {
       </div>
 
       {/* Particle canvas */}
-      <canvas
-        ref={canvasRef}
-        className="absolute inset-0 z-[1] pointer-events-auto"
-      />
+      <canvas ref={canvasRef} className="absolute inset-0 z-[1] pointer-events-auto" />
 
       {/* Floating orbs */}
       <div className="absolute top-1/4 left-1/4 w-72 h-72 rounded-full bg-primary/10 blur-[100px] animate-float" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full bg-accent/10 blur-[120px] animate-float" style={{ animationDelay: "3s" }} />
+      <div
+        className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full bg-accent/10 blur-[120px] animate-float"
+        style={{ animationDelay: "3s" }}
+      />
 
       {/* Content */}
-      <div ref={contentParallaxRef} className="relative z-10 container mx-auto px-6 text-center max-w-5xl will-change-transform" style={{ transform: `translateY(${contentOffset}px)` }}>
-        <div className="inline-flex items-center gap-2 glass rounded-full px-4 py-2 mb-8 animate-fade-in">
-          <span className="w-2 h-2 rounded-full bg-primary animate-glow-pulse" />
-          <span className="text-md font-semibold text-gradient">AI-Powered Enterprise Solutions</span>
+      <div
+        ref={contentParallaxRef}
+        className="relative z-10 container mx-auto px-4 sm:px-6 text-center max-w-5xl will-change-transform pt-20 sm:pt-24 md:pt-0"
+        style={{ transform: `translateY(${contentOffset}px)` }}
+      >
+        {/* ✅ Badge — nowrap fixed, smaller text on mobile */}
+        <div className="inline-flex items-center gap-2 glass rounded-full px-3 py-1.5 sm:px-4 sm:py-2 mb-6 sm:mb-8 animate-fade-in max-w-[90vw] mt-2 sm:mt-0">
+          <span className="w-2 h-2 rounded-full bg-primary animate-glow-pulse shrink-0" />
+          <span className="text-xs sm:text-sm font-semibold text-gradient whitespace-nowrap">
+            AI-Powered Enterprise Solutions
+          </span>
         </div>
 
-        <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold leading-[1.05] mb-8 animate-slide-up">
+        {/* ✅ Heading — smaller on mobile, scales up */}
+        <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-[1.1] mb-6 sm:mb-8 animate-slide-up">
           Transforming Business
           <br />
           Through{" "}
           <span className="text-gradient">Intelligence</span>
         </h1>
 
-        <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-12 animate-slide-up stagger-2 opacity-0">
-          We build the intelligence layer for your enterprise. From pre-built AI solutions
-          that deploy in weeks to fully custom cognitive systems.
+        {/* ✅ Subtext — tighter on mobile */}
+        <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-8 sm:mb-12 animate-slide-up stagger-2 opacity-0 px-2">
+          We build the intelligence layer for your enterprise. From pre-built AI
+          solutions that deploy in weeks to fully custom cognitive systems.
         </p>
 
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-slide-up stagger-3 opacity-0">
+        {/* ✅ Buttons — full width on mobile, side by side on sm+ */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 animate-slide-up stagger-3 opacity-0 px-4 sm:px-0">
           <a
             href="#approach"
-            className="bg-gradient-primary text-primary-foreground px-8 py-4 rounded-xl text-base font-semibold glow-primary hover:opacity-90 transition-all duration-300 hover:scale-105"
+            className="w-full sm:w-auto bg-gradient-primary text-primary-foreground px-8 py-3.5 sm:py-4 rounded-xl text-sm sm:text-base font-semibold glow-primary hover:opacity-90 transition-all duration-300 hover:scale-105 text-center"
           >
             Explore Our Approach
           </a>
           <a
             href="#contact"
-            className="glass text-foreground px-8 py-4 rounded-xl text-base font-semibold hover:bg-card/60 transition-all duration-300"
+            className="w-full sm:w-auto glass text-foreground px-8 py-3.5 sm:py-4 rounded-xl text-sm sm:text-base font-semibold hover:bg-card/60 transition-all duration-300 text-center"
           >
             Discuss Your Vision
           </a>
         </div>
 
-        {/* Stats */}
-        <div className="grid grid-cols-3 gap-8 mt-20 animate-slide-up stagger-4 opacity-0">
+        {/* ✅ Stats — 3 cols on all sizes but compact on mobile */}
+        <div className="grid grid-cols-3 gap-4 sm:gap-8 mt-14 sm:mt-20 animate-slide-up stagger-4 opacity-0">
           {[
-            { value: "3x", label: "Faster Deployment" },
+            { value: "3x",  label: "Faster Deployment" },
             { value: "95%", label: "Client Retention" },
             { value: "50+", label: "Enterprise Clients" },
           ].map((stat) => (
             <div key={stat.label} className="text-center">
-              <div className="font-display text-3xl md:text-4xl font-bold text-gradient">{stat.value}</div>
-              <div className="text-sm text-muted-foreground mt-1">{stat.label}</div>
+              <div className="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-gradient">
+                {stat.value}
+              </div>
+              <div className="text-xs sm:text-sm text-muted-foreground mt-1 leading-tight">
+                {stat.label}
+              </div>
             </div>
           ))}
         </div>
