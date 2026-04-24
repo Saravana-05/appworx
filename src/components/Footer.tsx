@@ -64,7 +64,7 @@ const Footer = () => {
         {/* Divider */}
         <div className="border-t border-border/50 pt-6">
           <p className="text-xs text-muted-foreground text-center">
-            © {new Date().getFullYear()} TechMate360 Ltd trading as AppWorX. All rights reserved.
+            © {new Date().getFullYear()} TechMate360 Ltd trading as AppworX. All rights reserved.
           </p>
         </div>
 

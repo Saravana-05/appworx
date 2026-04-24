@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const WHATSAPP_NUMBER = "447700000000"; // 🔁 Replace with real number later
+const WHATSAPP_NUMBER = "447432799968";
 const WHATSAPP_MESSAGE = "Hello! I'm interested in AppworX services. Could you please provide more information?";
 
 const WhatsAppFloat = () => {
