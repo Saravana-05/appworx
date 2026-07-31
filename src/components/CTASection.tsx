@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import ctaVideo from "@/assets/cta-video.mp4.asset.json";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, MapPin } from "lucide-react";
 import { useParallax } from "@/hooks/use-parallax";
 import ctaVideoFile from "../assets/cta-video.mp4";
 
@@ -22,7 +21,11 @@ const CTASection = () => {
   return (
     <section id="contact" className="py-32 relative overflow-hidden" ref={ref}>
       {/* Video background */}
-      <div ref={parallaxBg} className="absolute inset-0 will-change-transform" style={{ transform: `translateY(${bgOffset * 0.5}px)` }}>
+      <div
+        ref={parallaxBg}
+        className="absolute inset-0 will-change-transform"
+        style={{ transform: `translateY(${bgOffset * 0.5}px)` }}
+      >
         <video
           src={ctaVideoFile}
           autoPlay muted loop playsInline
@@ -34,7 +37,11 @@ const CTASection = () => {
       {/* Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-primary/8 blur-[180px]" />
 
-      <div ref={parallaxContent} className="container mx-auto px-6 relative will-change-transform" style={{ transform: `translateY(${contentOffset}px)` }}>
+      <div
+        ref={parallaxContent}
+        className="container mx-auto px-6 relative will-change-transform"
+        style={{ transform: `translateY(${contentOffset}px)` }}
+      >
         <div
           className={`max-w-3xl mx-auto text-center glass-strong rounded-3xl p-12 md:p-16 glow-primary relative overflow-hidden transition-all duration-1000 ${
             visible ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-12 scale-95"
@@ -45,7 +52,8 @@ const CTASection = () => {
             <div
               className="absolute -inset-1 animate-[spin_8s_linear_infinite]"
               style={{
-                background: "conic-gradient(from 0deg, transparent, hsl(var(--primary) / 0.3), transparent, hsl(var(--accent) / 0.3), transparent)",
+                background:
+                  "conic-gradient(from 0deg, transparent, hsl(var(--primary) / 0.3), transparent, hsl(var(--accent) / 0.3), transparent)",
               }}
             />
             <div className="absolute inset-[1px] rounded-3xl bg-card/90" />
@@ -60,9 +68,15 @@ const CTASection = () => {
               <h2 className="font-display text-4xl md:text-5xl font-bold mb-6">
                 Ready to <span className="text-gradient">Transform</span> Your Business?
               </h2>
-              <p className="text-muted-foreground text-lg mb-10 max-w-xl mx-auto">
+              <p className="text-muted-foreground text-lg mb-6 max-w-xl mx-auto">
                 Partner with AppworX today. Let's move from data to decisions at scale.
               </p>
+
+              {/* ✅ Address block */}
+              <div className="inline-flex items-center gap-2 text-sm text-muted-foreground mb-10 bg-muted/40 px-4 py-2 rounded-full border border-border/40">
+                <MapPin className="w-4 h-4 text-primary shrink-0" />
+                <span>124 City Road, London, England, EC1V 2NX</span>
+              </div>
             </div>
 
             <div

@@ -78,6 +78,7 @@ const Navbar = () => {
           ))}
           <a
             href="#contact"
+            onClick={() => setMobileOpen(false)}
             className="block mt-4 bg-gradient-primary text-primary-foreground px-5 py-2.5 rounded-lg text-sm font-medium text-center"
           >
             Get Started
