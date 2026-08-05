@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { ArrowRight, MapPin } from "lucide-react";
 import { useParallax } from "@/hooks/use-parallax";
+import ContactUsDialog from "@/components/ContactUsDialog";
 import ctaVideoFile from "../assets/cta-video.mp4";
 
 const CTASection = () => {
@@ -84,13 +85,15 @@ const CTASection = () => {
                 visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
               }`}
             >
-              <a
-                href="mailto:contact@appworx.com"
-                className="group bg-gradient-primary text-primary-foreground px-8 py-4 rounded-xl text-base font-semibold hover:opacity-90 transition-all duration-300 hover:scale-105 flex items-center gap-2"
-              >
-                Contact Us
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-              </a>
+              <ContactUsDialog>
+                <button
+                  type="button"
+                  className="group bg-gradient-primary text-primary-foreground px-8 py-4 rounded-xl text-base font-semibold hover:opacity-90 transition-all duration-300 hover:scale-105 flex items-center gap-2"
+                >
+                  Contact Us
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                </button>
+              </ContactUsDialog>
               <a
                 href="mailto:contact@appworx.com?subject=Consultation"
                 className="glass text-foreground px-8 py-4 rounded-xl text-base font-semibold hover:bg-card/60 transition-all duration-300 hover:scale-105"

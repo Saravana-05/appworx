@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { LogIn } from "lucide-react";
 import logo from "@/assets/logo.jpeg";
 
 const Navbar = () => {
@@ -42,6 +43,17 @@ const Navbar = () => {
               {link.label}
             </a>
           ))}
+
+          <a
+            href="https://poc.appworx.io"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 border border-white/30 text-white px-5 py-2.5 rounded-lg text-sm font-medium hover:bg-white/10 transition-colors duration-300"
+          >
+            <LogIn size={16} />
+            Login
+          </a>
+
           <a
             href="#contact"
             className="bg-gradient-primary text-primary-foreground px-5 py-2.5 rounded-lg text-sm font-medium hover:opacity-90 transition-opacity"
@@ -76,10 +88,22 @@ const Navbar = () => {
               {link.label}
             </a>
           ))}
+
+          <a
+            href="https://poc.appworx.io"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setMobileOpen(false)}
+            className="flex items-center justify-center gap-2 mt-4 border border-white/30 text-white px-5 py-2.5 rounded-lg text-sm font-medium text-center hover:bg-white/10 transition-colors duration-300"
+          >
+            <LogIn size={16} />
+            Login
+          </a>
+
           <a
             href="#contact"
             onClick={() => setMobileOpen(false)}
-            className="block mt-4 bg-gradient-primary text-primary-foreground px-5 py-2.5 rounded-lg text-sm font-medium text-center"
+            className="block mt-3 bg-gradient-primary text-primary-foreground px-5 py-2.5 rounded-lg text-sm font-medium text-center"
           >
             Get Started
           </a>
